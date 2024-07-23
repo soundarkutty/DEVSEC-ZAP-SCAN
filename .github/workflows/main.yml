@@ -1,20 +1,21 @@
-name :  OWASP ZAP Integration with GitHub Actions FLOW
+name: OWASP ZAP Integration with GitHub Actions flow
 
-on :  
-  workflow_dispatch : 
-    inputs : 
-      target_url : 
-        description :  ' URL of the web application to scan ' 
-        required :  true 
-        default :  ' http://testphp.vulnweb.com/ ' 
+on:
+  workflow_dispatch:
+    inputs:
+      target_url:
+        description: 'URL of the web application to scan'
+        required: true
+        default: 'http://testphp.vulnweb.com/'
 
-jobs:  
- zap_scan:  
+jobs:
+  zap_scan:
     runs-on: ubuntu-latest
     name: Scan the web application
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
       - name: ZAP Scan
         uses: zaproxy/action-full-scan@v0.10.0
         with:
